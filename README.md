@@ -40,7 +40,7 @@ Create `.env.local` with your API keys and access PIN:
 ANTHROPIC_API_KEY=your-anthropic-key
 ELEVENLABS_API_KEY=your-elevenlabs-key
 SESSION_SECRET=a-random-string-at-least-32-characters-long
-APP_ACCESS_PIN=12345678
+APP_ACCESS_PIN=your-8-digit-pin
 ```
 
 Start the dev server:

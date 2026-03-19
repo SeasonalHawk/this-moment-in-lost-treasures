@@ -1,12 +1,12 @@
 # This Moment in Lost Treasures
 
-An AI-powered lost treasures storytelling app with voice narration. Pick any calendar date and discover the most outlandish and hilarious lost fortunes that most history books skip — sunken gold, stolen art, buried pirate loot, misplaced crown jewels, and embarrassingly lost fortunes. Every story is a 150-200 word comical vignette narrated aloud with atmospheric background music. Based on [This Moment in History](https://github.com/SeasonalHawk/this-moment-in-history), retuned for lost treasures with a comical twist. Cloned from [This Moment in Strange History](https://github.com/SeasonalHawk/this-moment-in-strange-history) and adapted for the lost treasures theme.
+An AI-powered lost treasures storytelling app with voice narration. Pick any calendar date and discover the most outlandish and hilarious lost fortunes that most history books skip — sunken gold, stolen art, buried pirate loot, misplaced crown jewels, and embarrassingly lost fortunes. Every story is a 150-200 word comical vignette narrated aloud with atmospheric background music.
 
 ## How It Works
 
 1. **Pick a date** from the calendar
 2. **Read** the AI-generated creative nonfiction vignette
-3. **Listen** — narration auto-generates with Adam's voice and Voyagers!-themed accompaniment
+3. **Listen** — narration auto-generates with Adam's voice and atmospheric accompaniment
 4. **Control** — Play/Pause, Replay, Download MP3, Mute Music
 5. **Discover** — click "Random Treasure" for a treasure genre-themed story (Sunken Ships & Drowned Gold, Buried Pirate Loot, Cursed Treasure Hunts, and 17 more)
 6. **Download** the audio as an MP3 (includes branding outro)
@@ -19,7 +19,7 @@ An AI-powered lost treasures storytelling app with voice narration. Pick any cal
 | Styling | Tailwind CSS 4 |
 | AI Storytelling | Anthropic Claude API (`claude-haiku-4-5-20251001`) |
 | Voice Narration | ElevenLabs TTS API (Adam voice, Flash v2.5) |
-| Background Music | Voyagers!-themed ambient soundtrack (Chronostream Runner, static asset) |
+| Background Music | Atmospheric ambient soundtrack (Chronostream Runner, static asset) |
 | Authentication | iron-session (encrypted cookie sessions, static PIN gate) |
 | Calendar | react-day-picker, date-fns |
 | Testing | Vitest, React Testing Library |
@@ -57,7 +57,7 @@ Open [http://localhost:3000](http://localhost:3000)
 this-moment-in-lost-treasures/
 ├── public/
 │   ├── audio/
-│   │   └── chronostream-runner.mp3   # Voyagers!-themed background music (static asset)
+│   │   └── chronostream-runner.mp3   # Atmospheric background music (static asset)
 │   ├── logo-full.png                 # Midjourney cinematic logo (header, OG, social)
 │   ├── logo-icon.png                 # Midjourney app icon (1024x1024, favicon source)
 │   ├── logo.svg                      # Flat SVG timeline motif (inline/themeable)
@@ -88,13 +88,13 @@ this-moment-in-lost-treasures/
 │   │   ├── PinGate.tsx                # 8-digit PIN entry form (dark theme, amber accents)
 │   │   └── StoryCard.tsx              # Story display + audio controls + timing + cost estimate
 │   ├── hooks/
-│   │   ├── useBackgroundMusic.ts      # Voyagers! music — fade-in/out, warmUp, mute toggle
+│   │   ├── useBackgroundMusic.ts      # Background music — fade-in/out, warmUp, mute toggle
 │   │   ├── useHistoryStory.ts         # Story state + pipeline helpers (startLoading, setResult)
 │   │   └── useTextToSpeech.ts         # TTS playback, warmUp, playBlob, download, lifecycle
 │   ├── lib/
 │   │   ├── costs.ts                   # Per-request cost estimation (Claude + ElevenLabs)
 │   │   ├── genres.ts                  # 20 content genres + random selection
-│   │   ├── loadingMessages.ts         # Themed loading phase messages (treasure + Voyagers!)
+│   │   ├── loadingMessages.ts         # Themed loading phase messages (treasure hunt + narration)
 │   │   ├── pinAuth.ts                 # PIN verification + brute-force lockout (5 attempts/15 min)
 │   │   ├── prompts.ts                 # Shared system prompt + tool definition
 │   │   ├── rateLimit.ts               # In-memory rate limiter (10 req/IP/60s)
@@ -124,7 +124,7 @@ this-moment-in-lost-treasures/
 
 ## MVP Releases
 
-> **Note:** This project was cloned from [this-moment-in-strange-history](https://github.com/SeasonalHawk/this-moment-in-strange-history) and adapted for the lost treasures theme. The MVP history below reflects the original build progression, with descriptions updated to reference treasure-themed content where appropriate.
+> **Note:** The MVP history below reflects the build progression from March 13-15, 2026.
 
 ### MVP 1 — Core Story Engine (March 13, 2026)
 
@@ -160,8 +160,8 @@ Added "Read to Me" — hear the story narrated aloud.
 
 Added subtle ambient music that plays during narration.
 
-- Dreamscape piano loop generated via ElevenLabs Sound Effects API
-- Saved as static asset (`public/audio/ambient-bg.mp3`) — zero per-request cost
+- Atmospheric ambient track (Chronostream Runner, static asset)
+- Saved as static asset (`public/audio/chronostream-runner.mp3`) — zero per-request cost
 - Plays at 10% volume — subtle, non-intrusive
 - Music starts when narrator begins, stops when narrator stops
 - Mute toggle button (music note icon with strikethrough when muted)
@@ -240,16 +240,16 @@ Code quality pass — removed dead code, fixed bugs, optimized performance.
 - Target pipeline: Story ~3-4s (Haiku) + Audio ~5-8s (Flash) = ~8-12s with server overlap
 - 94 tests passing
 
-### MVP 9 — Voyagers! Music + Autoplay Fix (March 15, 2026)
+### MVP 9 — Atmospheric Music + Autoplay Fix (March 15, 2026)
 
-Replaced ambient music with Voyagers!-themed soundtrack and fixed audio reliability.
+Replaced ambient music with atmospheric soundtrack and fixed audio reliability.
 
-- Replaced dreamscape piano with **Chronostream Runner** — a Voyagers!-themed ambient track
+- Replaced initial piano loop with **Chronostream Runner** — an atmospheric ambient track
 - Fixed browser autoplay silence with `warmUp()` pattern for background music (mirrors TTS warmUp)
 - Professional **fade-in (2s) / fade-out (3s)** with asymmetric durations — mirrors broadcast audio practice
 - Reduced volume to 12% for the fuller orchestral track
 - Background music fades out gracefully after narration copyright outro finishes
-- Themed loading messages: treasure phase ("Consulting a suspiciously stained treasure map...", "Bribing a parrot for insider information...", "Blowing dust off a very dramatic treasure chest...", "Cross-referencing pirate diaries with tax records...", "Digging through history's lost-and-found bin...") and Voyagers! phase ("A treasure hunter is clearing their throat...", "Polishing the narration until it gleams like gold...", "The storyteller found a megaphone in the ruins...", "Translating ancient treasure gossip into English...", "A voice echoes from inside a treasure chest...", "Someone is dramatically unrolling a scroll...")
+- Themed loading messages: treasure phase ("Consulting a suspiciously stained treasure map...", "Bribing a parrot for insider information...", "Blowing dust off a very dramatic treasure chest...", "Cross-referencing pirate diaries with tax records...", "Digging through history's lost-and-found bin...") and narration phase ("A treasure hunter is clearing their throat...", "Polishing the narration until it gleams like gold...", "The storyteller found a megaphone in the ruins...", "Translating ancient treasure gossip into English...", "A voice echoes from inside a treasure chest...", "Someone is dramatically unrolling a scroll...")
 - Per-request cost estimation displayed on story card (Claude input/output tokens + ElevenLabs characters)
 - 209 tests passing
 
@@ -276,7 +276,7 @@ Professional branding, PWA support, and social sharing metadata. Lost Treasures 
 - **Open Graph + Twitter Cards** — Full social preview metadata in `layout.tsx` with `metadataBase` for production URL resolution
 - **SVG timeline motif** — Flat `logo.svg` for inline/themeable use cases
 - **Dev scripts** — `start.sh` / `stop.sh` convenience scripts for dev server
-- **Bug fixes** — metadataBase warning resolved (see [#23](https://github.com/SeasonalHawk/this-moment-in-history/issues/23)-[#29](https://github.com/SeasonalHawk/this-moment-in-history/issues/29)), branding implementation (see [#31](https://github.com/SeasonalHawk/this-moment-in-history/issues/31))
+- **Bug fixes** — metadataBase warning resolved, branding implementation
 - 214 tests passing
 
 ## API Token Costs
@@ -386,7 +386,7 @@ pnpm test:watch    # Watch mode
 | LoadingState.test.tsx | 14 | Phases, live timers, auto-expand/collapse, locked mode, custom messages |
 | costs.test.ts | 12 | Cost calculation, formatting, edge cases, token/char pricing |
 | issueOneRegression.test.ts | 10 | Critical architecture guards (warmUp, playBlob, pipeline helpers) |
-| loadingMessages.test.ts | 10 | Themed message arrays, pickRandom, Voyagers! messages |
+| loadingMessages.test.ts | 10 | Themed message arrays, pickRandom, narration phase messages |
 | genres.test.ts | 5 | Genre list integrity, random selection |
 
 ## The Story Behind the Build
@@ -397,7 +397,7 @@ The core idea: history doesn't have to read like a textbook. Every date has a tr
 
 MVP 2 and MVP 3 elevated the experience from reading to listening — adding voice narration and ambient music turned a text app into something closer to an audio documentary experience, all generated on demand. MVP 4 added genre-based treasure discovery, MVP 5 made the entire audio pipeline automatic, MVP 6 fixed browser autoplay compliance and added real-time pipeline performance metrics, MVP 7 cleaned up code quality and fixed bugs, and MVP 8 introduced a unified streaming pipeline with faster AI models to cut total generation time from ~31s to ~8-12s.
 
-MVP 9 brought the Voyagers!-themed Chronostream Runner soundtrack with professional fade-in/fade-out, and MVP 10 added system-controlled collapsible accordion sections — the LoadingState and StoryCard now persist in the DOM permanently with choreographed expand/collapse transitions, preventing premature button clicks before audio is ready. v1.0.0 added professional Midjourney branding, a complete favicon/PWA system, and Open Graph metadata for social sharing previews.
+MVP 9 brought the Chronostream Runner atmospheric soundtrack with professional fade-in/fade-out, and MVP 10 added system-controlled collapsible accordion sections — the LoadingState and StoryCard now persist in the DOM permanently with choreographed expand/collapse transitions, preventing premature button clicks before audio is ready. v1.0.0 added professional Midjourney branding, a complete favicon/PWA system, and Open Graph metadata for social sharing previews.
 
 ## Build Timeline
 

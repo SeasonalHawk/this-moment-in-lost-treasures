@@ -95,7 +95,7 @@ Features that **no competitor offers in combination**:
 1. **AI-generated immersive narratives** — 2nd-person, present-tense literary journalism (vs. encyclopedic bullet points)
 2. **20 genre/tone options** — Sunken Ships & Drowned Gold, Buried Pirate Loot, Lost Crown Jewels, etc. Lost treasures through different lenses
 3. **Server-streamed pipeline** — Story + audio in one streaming NDJSON request with server-side overlap
-4. **Voyagers!-themed soundtrack** — Chronostream Runner ambient music with professional fade-in/out synced with narration
+4. **Atmospheric soundtrack** — Chronostream Runner ambient music with professional fade-in/out synced with narration
 5. **Audio download** — Export narration as MP3 with branding outro
 6. **MLA citations** — Academic-grade sourcing on every story
 7. **Random Treasure** — Genre-randomized exploration across dates
@@ -249,14 +249,14 @@ Based on competitive analysis of pricing in the space:
 
 MVP 9 and 10 diverged from the original plan above. Instead of image generation and social sharing, the focus shifted to audio polish, cost transparency, and UI choreography — features that strengthen the core experience before adding new media layers.
 
-### MVP 9 — Voyagers! Music + Cost Estimation (SHIPPED)
+### MVP 9 — Atmospheric Music + Cost Estimation (SHIPPED)
 
 | Feature | What Shipped |
 |---------|-------------|
-| **Voyagers! soundtrack** | Replaced dreamscape piano with Chronostream Runner — a fuller, themed ambient track |
+| **Atmospheric soundtrack** | Replaced initial piano loop with Chronostream Runner — a fuller, themed ambient track |
 | **Background music warmUp** | Fixed browser autoplay for bg music with same warmUp() pattern as TTS |
 | **Professional fade-in/out** | 2s fade-in, 3s fade-out (asymmetric — mirrors broadcast practice) |
-| **Themed loading messages** | Random treasure-themed and Voyagers!-themed messages during generation |
+| **Themed loading messages** | Random treasure-themed and narration-themed messages during generation |
 | **Per-request cost estimation** | Claude token count + ElevenLabs character count → real-time cost displayed on card |
 | **209 tests passing** | +115 new tests covering music, costs, loading messages, regression guards |
 
@@ -290,7 +290,7 @@ MVP 9 and 10 diverged from the original plan above. Instead of image generation 
 | **Open Graph + Twitter Cards** | Social preview metadata in `layout.tsx` with `metadataBase` for production URL resolution |
 | **SVG timeline motif** | Flat `logo.svg` for inline/themeable use |
 | **Dev scripts** | `start.sh` / `stop.sh` convenience scripts |
-| **Bug fixes** | metadataBase warning, branding implementation — see [#23](https://github.com/SeasonalHawk/this-moment-in-lost-treasures/issues/23)-[#29](https://github.com/SeasonalHawk/this-moment-in-lost-treasures/issues/29), [#31](https://github.com/SeasonalHawk/this-moment-in-lost-treasures/issues/31) |
+| **Bug fixes** | metadataBase warning resolved, branding implementation |
 
 ### What's Next: MVP 11+
 
@@ -310,7 +310,7 @@ Based on the current state (10 MVPs, 214 tests, polished audio + UI), the highes
 ### Phase 1: Foundation (MVP 1-10 + v1.0.0) -- COMPLETE
 - Core storytelling engine with 20 genre lenses
 - Streaming pipeline (Claude Haiku + ElevenLabs Flash)
-- Voyagers!-themed background music with professional fade-in/out
+- Atmospheric background music with professional fade-in/out
 - System-controlled UI choreography (persistent DOM, locked Collapsible)
 - Per-request cost transparency
 - Professional branding (Midjourney logo, favicons, PWA, OG/Twitter metadata)

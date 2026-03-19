@@ -29,7 +29,7 @@
 
 This Moment in Lost Treasures is an AI-powered lost treasure storytelling application with voice narration. You pick any calendar date. The app uncovers the most outlandish and hilarious lost fortunes that most history books skip -- sunken gold, stolen art, buried pirate loot, misplaced crown jewels, and absurd treasure-hunting catastrophes. Each event becomes a vivid 150-200 word immersive vignette narrated aloud with atmospheric background music. The entire experience generates on demand in under 12 seconds.
 
-Every story is grounded in documented history. Every story is written like stand-up comedy meets history lecture. Every story comes with an event title, year, and MLA 9th edition citation. Based on [This Moment in History](https://github.com/SeasonalHawk/this-moment-in-history), retuned specifically for lost treasures and the comical disasters surrounding them.
+Every story is grounded in documented history. Every story is written like stand-up comedy meets history lecture. Every story comes with an event title, year, and MLA 9th edition citation.
 
 The app is a full-stack Next.js application deployed on Vercel, powered by Anthropic's Claude API for story generation and ElevenLabs' TTS API for voice narration. It was designed, built, and shipped by Kenneth Benavides as a portfolio project demonstrating AI-native application architecture, prompt engineering, and rapid MVP development.
 
@@ -53,15 +53,15 @@ The technical goal was equally specific: build a production-quality AI applicati
 |-----------|-------------|
 | **Date-Based Storytelling** | Pick any date from the calendar. Receive a historically accurate creative nonfiction vignette set on that date. |
 | **Voice Narration** | Every story is automatically narrated by Adam -- a deep, authoritative voice via ElevenLabs TTS. |
-| **Voyagers! Music** | Chronostream Runner ambient soundtrack plays during narration at 12% volume with 2s fade-in and 3s fade-out. |
+| **Background Music** | Chronostream Runner ambient soundtrack plays during narration at 12% volume with 2s fade-in and 3s fade-out. |
 | **Genre Discovery** | "Random Treasure" picks a random date and applies one of 20 genre lenses (Sunken Ships & Drowned Gold, Buried Pirate Loot, Lost Crown Jewels, Gold Rush Catastrophes, and 16 more). |
 | **Audio Controls** | Play/Pause, Replay from start, Download as MP3, Mute/Unmute background music. |
 | **System-Controlled Accordion** | LoadingState and StoryCard persist in DOM with choreographed expand/collapse transitions -- no user toggle, system controls visibility. |
 | **Real-Time Timing + Cost** | Pipeline timing breakdown and per-request cost estimation (Claude tokens + ElevenLabs characters) displayed on every story. |
 | **Streaming Pipeline** | Unified server endpoint overlaps story and audio generation. Story displays while audio is still being created. |
-| **Themed Loading Messages** | Random archive-themed ("Searching the archives...") and Voyagers!-themed ("The Omni is locked on...") messages during generation. |
+| **Themed Loading Messages** | Random treasure-themed ("Consulting a suspiciously stained treasure map...") and narration-themed ("A treasure hunter is clearing their throat...") messages during generation. |
 | **Branding Outro** | Every audio file ends with the event title, date, year, and "This audio is created by This Moment in Lost Treasures. Copyright 2026." |
-| **Professional Branding** | Midjourney cinematic logo, hybrid favicon system (ICO + PNG + Apple + Android), PWA manifest, Open Graph + Twitter Cards for social sharing. See [#31](https://github.com/SeasonalHawk/this-moment-in-history/issues/31). |
+| **Professional Branding** | Midjourney cinematic logo, hybrid favicon system (ICO + PNG + Apple + Android), PWA manifest, Open Graph + Twitter Cards for social sharing. |
 
 ---
 
@@ -111,9 +111,9 @@ Flash v2.5 generates audio for a 150-word story in approximately 5-8 seconds ver
 | `similarity_boost` | 0.75 | Strong voice consistency across stories |
 | `style` | 0 | Disabled -- reduces latency with minimal audible difference for narrator-style speech |
 
-### Background Music: Static Asset (Voyagers! Theme)
+### Background Music: Static Asset
 
-**Why not generated per request:** The Chronostream Runner soundtrack is generated once via ElevenLabs Sound Effects API and saved as a static asset (`public/audio/chronostream-runner.mp3`). This means zero per-request cost, zero latency, and consistent audio across sessions. The music loops at 12% volume -- tuned for the fuller Voyagers!-themed orchestral track.
+**Why not generated per request:** The Chronostream Runner soundtrack is generated once via ElevenLabs Sound Effects API and saved as a static asset (`public/audio/chronostream-runner.mp3`). This means zero per-request cost, zero latency, and consistent audio across sessions. The music loops at 12% volume -- tuned for the fuller orchestral track.
 
 **Why asymmetric fade:** Fade-in is 2 seconds, fade-out is 3 seconds. This mirrors broadcast audio practice -- listeners notice abrupt silence more than a slow swell. The longer fade-out creates a professional trail-off after the narration copyright outro finishes.
 
@@ -173,19 +173,19 @@ page.tsx (client reads NDJSON stream):
     |
     |-- "story" event:
     |   |-- history.setResult()         // Display story immediately
-    |   |-- tts.setLoadingState(true)   // Show Voyagers!-themed message
+    |   |-- tts.setLoadingState(true)   // Show narration-themed message
     |   |-- setCostData(tokens)         // Begin cost estimation
     |   |-- LoadingState phase 1 closes, phase 2 opens
     |
     |-- "audio" event:
     |   |-- Decode base64 --> Blob
     |   |-- tts.playBlob(blob)          // Auto-play narration
-    |   |-- bgMusic.play()              // Fade in Voyagers! music (2s)
+    |   |-- bgMusic.play()              // Fade in background music (2s)
     |   |-- setCostData(chars)          // Complete cost estimation
     |   |-- LoadingState auto-collapses, StoryCard auto-expands
     |
     v
-User hears narration with Voyagers! background music.
+User hears narration with atmospheric background music.
     |-- When narration ends: bgMusic.fadeOut() (3s fade)
     |-- Controls: Play/Pause, Replay, Download, Mute Music, Random Treasure
     |-- Timing + cost estimate displayed on StoryCard
@@ -244,7 +244,7 @@ The `handleEndedRef` pattern uses `useRef` for the event handler to maintain sta
 
 ### Background Music Lifecycle
 
-The `useBackgroundMusic` hook manages the Voyagers!-themed Chronostream Runner soundtrack:
+The `useBackgroundMusic` hook manages the Chronostream Runner atmospheric soundtrack:
 
 ```
 warmUp()   --> getAudio() (lazy init, sets loop + preload + volume 0)
@@ -407,13 +407,13 @@ Each MVP produces a *working application*. If development stopped at MVP 1, you'
 | 6 | Autoplay Fix + Timing | Browser autoplay compliance + timers | `warmUp()` pattern + `useRef` for timing |
 | 7 | Efficiency Review | Bug fixes + code cleanup | `handleEndedRef` identity fix, dead prop removal |
 | 8 | Streaming Pipeline | NDJSON streaming + faster models | Server-side overlap, Haiku + Flash |
-| 9 | Voyagers! Music | Themed soundtrack + cost estimation | Asymmetric fade, bgMusic warmUp, themed loading messages |
+| 9 | Atmospheric Music | Themed soundtrack + cost estimation | Asymmetric fade, bgMusic warmUp, themed loading messages |
 | 10 | System-Controlled Accordion | Persistent DOM cards + locked Collapsible | Derived state from props, non-interactive headers |
 | v1.0.0 | Branding & Metadata | Midjourney logo, favicons, PWA, OG/Twitter cards | Hybrid branding (PNG raster + SVG inline), `next/image` with priority |
 
 ### How Each Layer Built on the Last
 
-MVP 1 established the data model (story + metadata). MVP 2 consumed that data model for narration. MVP 3 synced with MVP 2's playback events. MVP 4 extended MVP 1's API with genre support. MVP 5 unified MVPs 1-4 into an automatic pipeline. MVP 6 fixed a browser-level bug from MVP 5. MVP 7 cleaned up technical debt from MVPs 1-6. MVP 8 replaced the sequential architecture from MVP 5 with a streaming pipeline. MVP 9 replaced the ambient piano with the Voyagers!-themed Chronostream Runner and added cost transparency. MVP 10 introduced the locked Collapsible pattern and made cards persist in the DOM permanently.
+MVP 1 established the data model (story + metadata). MVP 2 consumed that data model for narration. MVP 3 synced with MVP 2's playback events. MVP 4 extended MVP 1's API with genre support. MVP 5 unified MVPs 1-4 into an automatic pipeline. MVP 6 fixed a browser-level bug from MVP 5. MVP 7 cleaned up technical debt from MVPs 1-6. MVP 8 replaced the sequential architecture from MVP 5 with a streaming pipeline. MVP 9 replaced the ambient piano with the Chronostream Runner atmospheric soundtrack and added cost transparency. MVP 10 introduced the locked Collapsible pattern and made cards persist in the DOM permanently.
 
 Each MVP's interface contract was preserved. `StoryCard` still accepts the same props it has since MVP 6 (plus `autoExpand` from MVP 10). `useTextToSpeech` still exposes `speak()` even though the pipeline now uses `playBlob()`. Backward compatibility was maintained at every layer.
 
@@ -476,7 +476,7 @@ Deployed via `vercel.json`:
 | `LoadingState.test.tsx` | 14 | Phases, live timers, auto-expand/collapse, locked mode, themed messages |
 | `costs.test.ts` | 12 | Cost calculation accuracy, formatting, edge cases, token/character pricing |
 | `issueOneRegression.test.ts` | 10 | Architecture guards -- warmUp, playBlob, pipeline helpers, handleEndedRef |
-| `loadingMessages.test.ts` | 10 | Message array integrity, pickRandom distribution, Voyagers! theme messages |
+| `loadingMessages.test.ts` | 10 | Message array integrity, pickRandom distribution, narration phase messages |
 | `genres.test.ts` | 5 | Genre list integrity, random selection |
 
 ### Testing Philosophy
@@ -613,7 +613,7 @@ MVP 10 revealed that conditionally rendering components (`{loading && <LoadingSt
 
 ### 8. Asymmetric Fade Durations Mirror Broadcast Practice
 
-Fade-in and fade-out don't need to be symmetrical. The Voyagers! music uses 2 seconds fade-in but 3 seconds fade-out. Listeners notice abrupt silence more than a slow swell, so the fade-out is 50% longer. This small asymmetry creates a noticeably more professional audio experience -- the music trails off gracefully after the narration copyright outro instead of cutting abruptly.
+Fade-in and fade-out don't need to be symmetrical. The background music uses 2 seconds fade-in but 3 seconds fade-out. Listeners notice abrupt silence more than a slow swell, so the fade-out is 50% longer. This small asymmetry creates a noticeably more professional audio experience -- the music trails off gracefully after the narration copyright outro instead of cutting abruptly.
 
 ---
 

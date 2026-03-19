@@ -53,7 +53,7 @@ Every dependency was chosen for a specific reason. This table covers the full st
 
 | Asset | File | Purpose |
 |-------|------|---------|
-| **Background Music** | `public/audio/chronostream-runner.mp3` | Voyagers!-themed ambient soundtrack. Generated once via ElevenLabs Sound Effects, served as a static file — zero per-request cost. Loops at 12% volume with 2s fade-in and 3s fade-out. |
+| **Background Music** | `public/audio/chronostream-runner.mp3` | Atmospheric ambient soundtrack. Generated once via ElevenLabs Sound Effects, served as a static file — zero per-request cost. Loops at 12% volume with 2s fade-in and 3s fade-out. |
 | **Cinematic Logo** | `public/logo-full.png` | Midjourney-generated logo displayed in header via `next/image` with `priority` preload. Also used for OG and Twitter social cards. |
 | **App Icon** | `public/logo-icon.png` | 1024x1024 Midjourney-generated icon. Source image for all favicon derivatives. |
 | **SVG Logo** | `public/logo.svg` | Flat timeline motif for inline/themeable use cases (not currently rendered in UI). |
@@ -112,7 +112,7 @@ page.tsx (CLIENT reads NDJSON stream):
     |-- "audio" event:
     |   |-- Decode base64 --> Blob
     |   |-- tts.playBlob(blob)          // Auto-play narration
-    |   |-- bgMusic.play()              // Fade in Voyagers! music (2s)
+    |   |-- bgMusic.play()              // Fade in Background music (2s)
     |   |-- setCostData(chars)          // Complete cost estimation
     |   |-- Update phase timers         // Show audio generation time
     |
@@ -265,7 +265,7 @@ State is separated into three independent hooks. Each manages one concern and ex
 
 **Key pattern — `handleEndedRef`:** The `ended` event handler is stored in a `useRef` to maintain stable function identity. Without this, `addEventListener` and `removeEventListener` receive different function references on each render, causing ghost listeners.
 
-### useBackgroundMusic — Voyagers! Soundtrack
+### useBackgroundMusic — Atmospheric Soundtrack
 
 | Method | Purpose |
 |--------|---------|
@@ -386,16 +386,16 @@ Every source file with its purpose:
 | `src/components/Collapsible.tsx` | Reusable accordion — interactive or locked mode, measured scrollHeight animation |
 | `src/components/LoadingState.tsx` | Multi-phase loading indicator — themed messages, live elapsed timers, locked Collapsible |
 | `src/components/StoryCard.tsx` | Story display — genre badge, audio controls, MLA citation, timing + cost, locked Collapsible |
-| `src/hooks/useBackgroundMusic.ts` | Voyagers! music — fade-in/out, warmUp, mute toggle, sync with narrator |
+| `src/hooks/useBackgroundMusic.ts` | Background music — fade-in/out, warmUp, mute toggle, sync with narrator |
 | `src/hooks/useHistoryStory.ts` | Story state — fetchStory (standalone), startLoading/setResult/setErrorState (pipeline) |
 | `src/hooks/useTextToSpeech.ts` | TTS playback — warmUp, playBlob, speak, togglePlayPause, replay, download, cleanup |
 | `src/lib/costs.ts` | Cost estimation — Claude token pricing + ElevenLabs character pricing |
 | `src/lib/genres.ts` | 20 curated treasure genres + `getRandomGenre()` random selection |
-| `src/lib/loadingMessages.ts` | Themed loading phase messages — treasure hunt theme + Voyagers! theme |
+| `src/lib/loadingMessages.ts` | Themed loading phase messages — treasure hunt theme + narration phase |
 | `src/lib/prompts.ts` | Shared system prompt, `publish_vignette` tool definition, `STORY_MODEL` constant |
 | `src/lib/rateLimit.ts` | In-memory rate limiter — per-IP tracking, configurable window and max |
 | `src/lib/validation.ts` | Input validation — month, day, genre, monthName mapping, buildUserMessage |
-| `public/audio/chronostream-runner.mp3` | Voyagers!-themed background music (static asset, loops during narration) |
+| `public/audio/chronostream-runner.mp3` | Atmospheric background music (static asset, loops during narration) |
 | `public/logo-full.png` | Midjourney cinematic logo (header display, OG/Twitter social cards) |
 | `public/logo-icon.png` | Midjourney app icon (1024x1024, source for favicon derivatives) |
 | `public/logo.svg` | Flat SVG timeline motif (inline/themeable branding) |
@@ -427,7 +427,7 @@ Every source file with its purpose:
 | `LoadingState.test.tsx` | 14 | Phases, live timers, auto-expand/collapse, locked mode, themed messages |
 | `costs.test.ts` | 12 | Cost calculation accuracy, formatting, edge cases, token/character pricing |
 | `issueOneRegression.test.ts` | 10 | Architecture guards — warmUp, playBlob, pipeline helpers, handleEndedRef |
-| `loadingMessages.test.ts` | 10 | Message array integrity, pickRandom distribution, Voyagers! theme messages |
+| `loadingMessages.test.ts` | 10 | Message array integrity, pickRandom distribution, narration phase messages |
 | `genres.test.ts` | 5 | Genre list has 20 entries, all non-empty strings, getRandomGenre returns valid genre |
 
 ---

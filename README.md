@@ -1,6 +1,6 @@
-# This Moment in Strange History
+# This Moment in Lost Treasures
 
-An AI-powered strange history storytelling app with voice narration. Pick any calendar date and discover the weird, bizarre, and unexplained moments that most history books skip — mass hysterias, cursed objects, mysterious disappearances, bizarre deaths, and eerie coincidences. Every story is a 150-200 word immersive vignette narrated aloud with atmospheric background music. Based on [This Moment in History](https://github.com/SeasonalHawk/this-moment-in-history), retuned for the strange and unexplained.
+An AI-powered lost treasures storytelling app with voice narration. Pick any calendar date and discover the most outlandish and hilarious lost fortunes that most history books skip — sunken gold, stolen art, buried pirate loot, misplaced crown jewels, and embarrassingly lost fortunes. Every story is a 150-200 word comical vignette narrated aloud with atmospheric background music. Based on [This Moment in History](https://github.com/SeasonalHawk/this-moment-in-history), retuned for lost treasures with a comical twist. Cloned from [This Moment in Strange History](https://github.com/SeasonalHawk/this-moment-in-strange-history) and adapted for the lost treasures theme.
 
 ## How It Works
 
@@ -8,7 +8,7 @@ An AI-powered strange history storytelling app with voice narration. Pick any ca
 2. **Read** the AI-generated creative nonfiction vignette
 3. **Listen** — narration auto-generates with Adam's voice and Voyagers!-themed accompaniment
 4. **Control** — Play/Pause, Replay, Download MP3, Mute Music
-5. **Discover** — click "Random History" for a strange genre-themed story (Cryptids, Cursed Objects, Bizarre Deaths, and 17 more)
+5. **Discover** — click "Random Treasure" for a treasure genre-themed story (Sunken Ships & Drowned Gold, Buried Pirate Loot, Cursed Treasure Hunts, and 17 more)
 6. **Download** the audio as an MP3 (includes branding outro)
 
 ## Tech Stack
@@ -28,8 +28,8 @@ An AI-powered strange history storytelling app with voice narration. Pick any ca
 ## Quick Start
 
 ```bash
-git clone https://github.com/SeasonalHawk/this-moment-in-strange-history.git
-cd this-moment-in-strange-history
+git clone https://github.com/SeasonalHawk/this-moment-in-lost-treasures.git
+cd this-moment-in-lost-treasures
 pnpm install
 ```
 
@@ -51,7 +51,7 @@ Open [http://localhost:3000](http://localhost:3000)
 ## Project Structure
 
 ```
-this-moment-in-strange-history/
+this-moment-in-lost-treasures/
 ├── public/
 │   ├── audio/
 │   │   └── chronostream-runner.mp3   # Voyagers!-themed background music (static asset)
@@ -85,7 +85,7 @@ this-moment-in-strange-history/
 │   ├── lib/
 │   │   ├── costs.ts                   # Per-request cost estimation (Claude + ElevenLabs)
 │   │   ├── genres.ts                  # 20 content genres + random selection
-│   │   ├── loadingMessages.ts         # Themed loading phase messages (archive + Voyagers!)
+│   │   ├── loadingMessages.ts         # Themed loading phase messages (treasure + Voyagers!)
 │   │   ├── prompts.ts                 # Shared system prompt + tool definition
 │   │   ├── rateLimit.ts               # In-memory rate limiter (10 req/IP/60s)
 │   │   └── validation.ts             # Input validation (month, day, genre)
@@ -113,13 +113,15 @@ this-moment-in-strange-history/
 
 ## MVP Releases
 
+> **Note:** This project was cloned from [this-moment-in-strange-history](https://github.com/SeasonalHawk/this-moment-in-strange-history) and adapted for the lost treasures theme. The MVP history below reflects the original build progression, with descriptions updated to reference treasure-themed content where appropriate.
+
 ### MVP 1 — Core Story Engine (March 13, 2026)
 
 The foundation: pick a date, get a story.
 
 - Calendar date picker with amber/stone dark theme
 - AI-generated creative nonfiction vignettes (200-300 words)
-- Second-person, present-tense immersive storytelling
+- Second-person, present-tense comical storytelling in a stand-up comedy meets history lecture style
 - "Spin Your Luck" button for alternate stories on the same date
 - Event title, year, and MLA 9th edition citation with every story
 - Server-side API key protection
@@ -139,8 +141,8 @@ Added "Read to Me" — hear the story narrated aloud.
 - Audio auto-stops when picking a new date or spinning
 - Download button — save narration as MP3
 - Narration ending reads: event title, date, year, then branding outro
-- Branding: "This audio is created by This Moment in Strange History. Copyright 2026."
-- Download filename includes event title (e.g., `this-moment-in-strange-history-the-fall-of-the-berlin-wall.mp3`)
+- Branding: "This audio is created by This Moment in Lost Treasures. Copyright 2026."
+- Download filename includes event title (e.g., `lost-treasure-the-missing-amber-room.mp3`)
 - 54 tests passing
 
 ### MVP 3 — Background Music (March 14, 2026)
@@ -155,12 +157,12 @@ Added subtle ambient music that plays during narration.
 - Mute only affects volume — does not start or stop playback independently
 - 61 tests passing
 
-### MVP 4 — Random History (March 14, 2026)
+### MVP 4 — Random Treasure (March 14, 2026)
 
-Added genre-based discovery — explore history through thematic lenses.
+Added genre-based discovery — explore lost treasures through thematic lenses.
 
-- "Random History" button replaces "Spin Your Luck" — picks a random date and genre
-- 20 curated strange history genres: Unexplained Disappearances, Mass Hysteria & Panic, Cursed Objects & Places, Bizarre Deaths, Cryptids & Creature Sightings, Paranormal Investigations, Medical Oddities, Strange Weather & Natural Anomalies, Eerie Coincidences, Forgotten Experiments, Bizarre Laws & Trials, Haunted History, Strange Crimes, Mysterious Signals & Messages, Doomsday Predictions & Cults, Time Slips & Glitches, Odd Traditions & Rituals, Weird Science, Lost Civilizations & Ruins, Unsolved Mysteries
+- "Random Treasure" button replaces "Spin Your Luck" — picks a random date and genre
+- 20 curated lost treasures genres: Sunken Ships & Drowned Gold, Buried Pirate Loot, Lost Crown Jewels, Vanished Art Masterpieces, Forgotten Tombs & Crypts, Cursed Treasure Hunts, Missing War Plunder, Legendary Lost Mines, Disappeared Museum Collections, Shipwrecked Fortunes, Hidden Vault Disasters, Stolen Relics & Artifacts, Lost Libraries & Scrolls, Misplaced National Treasures, Treasure Maps Gone Wrong, Accidental Treasure Discoveries, Ransomed Riches Never Returned, Gold Rush Catastrophes, Royal Heirlooms Gone AWOL, Embarrassingly Lost Fortunes
 - Genre used as thematic lens for AI story generation via Kajiro IQ Pro prompting
 - Genre badge displayed on story card
 - Genre validation on server-side
@@ -171,12 +173,12 @@ Added genre-based discovery — explore history through thematic lenses.
 Seamless audio experience — narration auto-generates as part of the story pipeline.
 
 - Auto-generate TTS audio immediately after story loads (no manual button click)
-- Multi-phase loading states: "Uncovering history..." then "Finding our history professor..."
+- Multi-phase loading states: "Consulting a suspiciously stained treasure map..." then "A treasure hunter is clearing their throat..."
 - Play/Pause toggle replaces the old "Read to Me" / "Stop Reading" buttons
 - Replay button to restart narration from the beginning
 - Background music fade-in (0 to 15% volume over 2 seconds)
 - Background music pauses/resumes in sync with narrator play/pause
-- Full audio state reset on date change and Random History click
+- Full audio state reset on date change and Random Treasure click
 - Reduced Claude API max_tokens from 2048 to 1024 for faster response times
 - fetchStory() returns data directly for zero-delay TTS trigger
 - Removed manual "Read to Me" button — audio is now fully automatic
@@ -190,7 +192,7 @@ Fixed browser autoplay policy and added real-time performance feedback.
 - Real-time elapsed timer during both loading phases (updates every 100ms)
 - Pipeline timing breakdown on story card: "Story Xs · Audio Ys · Total Zs"
 - `phaseStartRef` uses `useRef` (not state) for synchronous timing accuracy in async code
-- Timing resets on every new date selection or Random History click
+- Timing resets on every new date selection or Random Treasure click
 - 78 tests passing
 
 ### MVP 7 — Efficiency Review (March 14, 2026)
@@ -201,7 +203,7 @@ Code quality pass — removed dead code, fixed bugs, optimized performance.
 - Removed dead `audioPaused` prop from StoryCard (accepted but never used in rendering)
 - Added defensive `URL.revokeObjectURL` guard in `speak()` to prevent blob memory leaks
 - Removed redundant `cleanup()` call inside `warmUp()` (callers already call cleanup)
-- Extracted `runPipeline()` to unify `handleDateSelect` and `handleRandomHistory` flows
+- Extracted `runPipeline()` to unify `handleDateSelect` and `handleRandomTreasure` flows
 - Moved `formatMs` to module scope (was recreated every render)
 - Switched ElevenLabs model from `eleven_multilingual_v2` to `eleven_turbo_v2_5`
 - Set ElevenLabs `style: 0` to reduce TTS latency
@@ -236,7 +238,7 @@ Replaced ambient music with Voyagers!-themed soundtrack and fixed audio reliabil
 - Professional **fade-in (2s) / fade-out (3s)** with asymmetric durations — mirrors broadcast audio practice
 - Reduced volume to 12% for the fuller orchestral track
 - Background music fades out gracefully after narration copyright outro finishes
-- Themed loading messages: archive/scroll phase ("Searching the archives...") and Voyagers! phase ("The Omni is locked on...")
+- Themed loading messages: treasure phase ("Consulting a suspiciously stained treasure map...", "Bribing a parrot for insider information...", "Blowing dust off a very dramatic treasure chest...", "Cross-referencing pirate diaries with tax records...", "Digging through history's lost-and-found bin...") and Voyagers! phase ("A treasure hunter is clearing their throat...", "Polishing the narration until it gleams like gold...", "The storyteller found a megaphone in the ruins...", "Translating ancient treasure gossip into English...", "A voice echoes from inside a treasure chest...", "Someone is dramatically unrolling a scroll...")
 - Per-request cost estimation displayed on story card (Claude input/output tokens + ElevenLabs characters)
 - 209 tests passing
 
@@ -255,7 +257,7 @@ Cards persist in DOM — system choreographs expand/collapse for a polished UX.
 
 ### v1.0.0 — Branding & Metadata (March 15, 2026)
 
-Professional branding, PWA support, and social sharing metadata.
+Professional branding, PWA support, and social sharing metadata. Lost Treasures Edition.
 
 - **Midjourney cinematic logo** — `logo-full.png` replaces text header in `page.tsx` via `next/image` with `priority` (LCP preload)
 - **Hybrid favicon system** — Multi-size ICO (16/32/48px), Apple touch icon (180px), Android Chrome icons (192/512px) generated from Midjourney app icon
@@ -375,9 +377,9 @@ pnpm test:watch    # Watch mode
 
 This project started as a portfolio build challenge: go from zero to deployed in a 3-day sprint, following a structured build guide. What was estimated to take 8-11 hours across 3 days was completed in two evening sessions (~6 hours total) using Claude Code and the Kajiro IQ Pro prompt optimization framework.
 
-The core idea: history doesn't have to read like a textbook. Every date has a story worth telling — not as a list of facts, but as a moment you can feel. The AI system prompt enforces literary journalism rules: sensory details, real people, real places, present tense, second person. No "On this day in..." openings. No Wikipedia summaries. Just immersive storytelling grounded in fact.
+The core idea: history doesn't have to read like a textbook. Every date has a treasure story worth telling — not as a list of facts, but as a moment you can laugh at. The AI system prompt enforces a stand-up comedy meets history lecture style: sensory details, real people, real places, present tense, second person. No "On this day in..." openings. No Wikipedia summaries. Just comical storytelling grounded in fact, focused on the world's most absurd lost fortunes.
 
-MVP 2 and MVP 3 elevated the experience from reading to listening — adding voice narration and ambient music turned a text app into something closer to an audio documentary experience, all generated on demand. MVP 4 added genre-based discovery, MVP 5 made the entire audio pipeline automatic, MVP 6 fixed browser autoplay compliance and added real-time pipeline performance metrics, MVP 7 cleaned up code quality and fixed bugs, and MVP 8 introduced a unified streaming pipeline with faster AI models to cut total generation time from ~31s to ~8-12s.
+MVP 2 and MVP 3 elevated the experience from reading to listening — adding voice narration and ambient music turned a text app into something closer to an audio documentary experience, all generated on demand. MVP 4 added genre-based treasure discovery, MVP 5 made the entire audio pipeline automatic, MVP 6 fixed browser autoplay compliance and added real-time pipeline performance metrics, MVP 7 cleaned up code quality and fixed bugs, and MVP 8 introduced a unified streaming pipeline with faster AI models to cut total generation time from ~31s to ~8-12s.
 
 MVP 9 brought the Voyagers!-themed Chronostream Runner soundtrack with professional fade-in/fade-out, and MVP 10 added system-controlled collapsible accordion sections — the LoadingState and StoryCard now persist in the DOM permanently with choreographed expand/collapse transitions, preventing premature button clicks before audio is ready. v1.0.0 added professional Midjourney branding, a complete favicon/PWA system, and Open Graph metadata for social sharing previews.
 

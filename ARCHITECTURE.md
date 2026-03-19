@@ -1,13 +1,13 @@
 # Architecture — Complete Technology Reference
 
-**This Moment in Strange History** — System Design & Technology Map
+**This Moment in Lost Treasures** — System Design & Technology Map
 By Kenneth Benavides | v1.0.0 | March 2026
 
 ---
 
 ## System Overview
 
-This Moment in Strange History is a full-stack AI storytelling application built on Next.js 16. A single streaming API endpoint coordinates two external services — Anthropic Claude for story generation and ElevenLabs for voice narration — and delivers both results to the browser over an NDJSON stream. The client renders stories immediately while audio is still generating on the server. Background music, cost estimation, and system-controlled UI choreography run entirely on the client with zero additional API calls.
+This Moment in Lost Treasures is a full-stack AI storytelling application built on Next.js 16. A single streaming API endpoint coordinates two external services — Anthropic Claude for story generation and ElevenLabs for voice narration — and delivers both results to the browser over an NDJSON stream. The client renders stories immediately while audio is still generating on the server. Background music, cost estimation, and system-controlled UI choreography run entirely on the client with zero additional API calls.
 
 ---
 
@@ -46,7 +46,7 @@ Every dependency was chosen for a specific reason. This table covers the full st
 | Service | Model / Config | Purpose | Why This One |
 |---------|---------------|---------|-------------|
 | **Anthropic Claude API** | `claude-haiku-4-5-20251001` | Story generation | Follows complex multi-constraint prompts with high fidelity. `tool_use` forces structured JSON output in a single call. Haiku 4.5 delivers similar quality to Sonnet for 150-word vignettes at 1/3 the cost and 3-5x the speed. |
-| **ElevenLabs TTS API** | `eleven_flash_v2_5`, Adam voice (`pNInz6obpgDQGcFmaJgB`) | Voice narration | Neural voice synthesis. Flash v2.5 generates audio in 5-8 seconds vs. 18+ seconds with multilingual model. Adam's deep, authoritative tone matches the literary journalism style. |
+| **ElevenLabs TTS API** | `eleven_flash_v2_5`, Adam voice (`pNInz6obpgDQGcFmaJgB`) | Voice narration | Neural voice synthesis. Flash v2.5 generates audio in 5-8 seconds vs. 18+ seconds with multilingual model. Adam's deep, energetic tone matches the stand-up comedian who happens to be a history professor style. |
 | **Vercel** | — | Hosting & deployment | Zero-config Next.js hosting. Automatic HTTPS, edge network, preview deployments. |
 
 ### Static Assets
@@ -69,7 +69,7 @@ Every dependency was chosen for a specific reason. This table covers the full st
 The complete request lifecycle from user click to audio playback:
 
 ```
-User clicks a date (or "Random History")
+User clicks a date (or "Random Treasure")
     |
     v
 page.tsx: runPipeline(date, genre?)
@@ -121,7 +121,7 @@ User hears narration with background music.
     |-- LoadingState collapses (system-controlled)
     |-- StoryCard expands (system-controlled)
     |-- When narration ends: bgMusic.fadeOut() (3s fade)
-    |-- Controls: Play/Pause, Replay, Download MP3, Mute Music, Random History
+    |-- Controls: Play/Pause, Replay, Download MP3, Mute Music, Random Treasure
 ```
 
 ---
@@ -138,7 +138,7 @@ The main endpoint used in production. Handles story generation and TTS in a sing
 {
   "month": 3,
   "day": 14,
-  "genre": "True Crime"
+  "genre": "Buried Pirate Loot"
 }
 ```
 
@@ -151,7 +151,7 @@ The main endpoint used in production. Handles story generation and TTS in a sing
 **Response:** `Content-Type: application/x-ndjson`
 
 ```
-Line 1: {"type":"story","story":"...","eventTitle":"...","eventYear":"1945","mlaCitation":"...","date":{"month":3,"day":14},"genre":"True Crime","inputTokens":700,"outputTokens":295}
+Line 1: {"type":"story","story":"...","eventTitle":"...","eventYear":"1945","mlaCitation":"...","date":{"month":3,"day":14},"genre":"Buried Pirate Loot","inputTokens":700,"outputTokens":295}
 Line 2: {"type":"audio","audio":"SUQzBAAAAAAAI1RTU0UAAA...","ttsCharacters":1150}
 ```
 
@@ -177,10 +177,10 @@ Converts text to speech. Returns raw audio bytes (`audio/mpeg`).
 
 ```json
 {
-  "text": "The air smells of...",
-  "eventTitle": "The Fall of Berlin",
+  "text": "The gold glints under...",
+  "eventTitle": "The Amber Room Vanishes",
   "eventDate": "November 9",
-  "eventYear": "1989"
+  "eventYear": "1943"
 }
 ```
 
@@ -295,7 +295,7 @@ State is separated into three independent hooks. Each manages one concern and ex
 | **Locked Collapsible** | LoadingState, StoryCard headers | System controls visibility — users cannot toggle. Headers render as `<div>` instead of `<button>`. Prevents premature interaction before audio is ready. |
 | **Asymmetric Fade** | Background music (2s in, 3s out) | Listeners notice silence more than swell. Longer fade-out creates a professional trail-off that mirrors broadcast audio production. |
 | **Constraint Prompting** | System prompt for Claude | 400+ words defining what to do, what NOT to do, and how to verify quality. Anti-patterns section prevents encyclopedic defaults. Produces consistent output even with smaller models. |
-| **Genre as Lens** | `buildUserMessage()` with genre | Genre shapes the story angle, not a database filter. Same date can yield 20 different stories. All historically accurate regardless of genre. |
+| **Genre as Lens** | `buildUserMessage()` with genre | Genre shapes the treasure angle, not a database filter. Same date can yield 20 different stories. All historically accurate regardless of genre. |
 | **Derived State** | `const expanded = autoExpand` | No internal useState for expand/collapse. Component state is directly derived from props. Eliminates sync bugs between parent and child state. |
 | **Server-Side Overlap** | Pipeline route (story then TTS) | TTS fires immediately after Claude responds — zero client round-trip between phases. Saves 100-200ms plus architectural complexity. |
 
@@ -390,8 +390,8 @@ Every source file with its purpose:
 | `src/hooks/useHistoryStory.ts` | Story state — fetchStory (standalone), startLoading/setResult/setErrorState (pipeline) |
 | `src/hooks/useTextToSpeech.ts` | TTS playback — warmUp, playBlob, speak, togglePlayPause, replay, download, cleanup |
 | `src/lib/costs.ts` | Cost estimation — Claude token pricing + ElevenLabs character pricing |
-| `src/lib/genres.ts` | 20 curated content genres + `getRandomGenre()` random selection |
-| `src/lib/loadingMessages.ts` | Themed loading phase messages — archive theme + Voyagers! theme |
+| `src/lib/genres.ts` | 20 curated treasure genres + `getRandomGenre()` random selection |
+| `src/lib/loadingMessages.ts` | Themed loading phase messages — treasure hunt theme + Voyagers! theme |
 | `src/lib/prompts.ts` | Shared system prompt, `publish_vignette` tool definition, `STORY_MODEL` constant |
 | `src/lib/rateLimit.ts` | In-memory rate limiter — per-IP tracking, configurable window and max |
 | `src/lib/validation.ts` | Input validation — month, day, genre, monthName mapping, buildUserMessage |
@@ -438,17 +438,17 @@ The Claude system prompt (`src/lib/prompts.ts`) is a 400+ word instruction set b
 
 | Section | Purpose | Key Rules |
 |---------|---------|-----------|
-| **Voice Rules** | Define the writing style | Second person, present tense, open with sensory detail, literary journalism |
+| **Voice Rules** | Define the writing style | Second person, present tense, open with sensory detail, stand-up comedian who happens to be a history professor |
 | **Factual Integrity** | Ensure historical accuracy | Real events only, no invented details, no unverified speculation |
-| **Structure** | Shape the narrative arc | One scene, build tension, resonant closing line, no moral lessons |
+| **Structure** | Shape the comedic arc | One scene, build absurdity, land the punchline, no moral lessons |
 | **Anti-Patterns** | Prevent common AI defaults | No encyclopedic openings, no bullet points, no meta-commentary |
 
 The `publish_vignette` tool schema forces Claude to return structured output:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `story` | string | 150-200 word creative nonfiction vignette |
-| `eventTitle` | string | Short title for the historical event |
+| `story` | string | 150-200 word comical creative nonfiction vignette |
+| `eventTitle` | string | Short title for the lost treasure event |
 | `eventYear` | string | Year the event occurred |
 | `mlaCitation` | string | MLA 9th edition formatted citation |
 

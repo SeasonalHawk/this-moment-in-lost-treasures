@@ -1,4 +1,4 @@
-# This Moment in Strange History -- User & Developer Guide
+# This Moment in Lost Treasures -- User & Developer Guide
 
 **Author:** Kenneth Benavides
 **Built with:** Claude Code + Kajiro IQ Pro
@@ -27,9 +27,9 @@
 
 ## What This Project Is
 
-This Moment in Strange History is an AI-powered strange history storytelling application with voice narration. You pick any calendar date. The app uncovers the weird, bizarre, and unexplained events that most history books skip -- mass hysterias, cursed objects, mysterious disappearances, bizarre deaths, and eerie coincidences. Each event becomes a vivid 150-200 word immersive vignette narrated aloud with atmospheric background music. The entire experience generates on demand in under 12 seconds.
+This Moment in Lost Treasures is an AI-powered lost treasure storytelling application with voice narration. You pick any calendar date. The app uncovers the most outlandish and hilarious lost fortunes that most history books skip -- sunken gold, stolen art, buried pirate loot, misplaced crown jewels, and absurd treasure-hunting catastrophes. Each event becomes a vivid 150-200 word immersive vignette narrated aloud with atmospheric background music. The entire experience generates on demand in under 12 seconds.
 
-Every story is grounded in documented history. Every story is written like literary journalism meets campfire storytelling. Every story comes with an event title, year, and MLA 9th edition citation. Based on [This Moment in History](https://github.com/SeasonalHawk/this-moment-in-history), retuned specifically for the strange and unexplained.
+Every story is grounded in documented history. Every story is written like stand-up comedy meets history lecture. Every story comes with an event title, year, and MLA 9th edition citation. Based on [This Moment in History](https://github.com/SeasonalHawk/this-moment-in-history), retuned specifically for lost treasures and the comical disasters surrounding them.
 
 The app is a full-stack Next.js application deployed on Vercel, powered by Anthropic's Claude API for story generation and ElevenLabs' TTS API for voice narration. It was designed, built, and shipped by Kenneth Benavides as a portfolio project demonstrating AI-native application architecture, prompt engineering, and rapid MVP development.
 
@@ -41,7 +41,7 @@ History doesn't have to read like a textbook.
 
 Most "this day in history" apps give you a list of bullet points. A sentence about a treaty. A date next to a name. Facts without feeling.
 
-This project started from a different premise: every date has a story worth *feeling*. Not as a list, but as a moment. The smell of gunpowder. The sound of a crowd. The weight of a decision made in a room with bad lighting. The AI system prompt enforces literary journalism rules -- sensory details, real people, real places, present tense, second person. The result reads like the opening paragraph of a magazine feature, not an encyclopedia entry.
+This project started from a different premise: every date has a story worth *feeling*. Not as a list, but as a moment. The glint of gold at the bottom of a shipwreck. The sound of a shovel hitting an empty chest. The weight of a treasure map drawn by a con artist in a bar with bad lighting. The AI system prompt enforces comedic literary journalism rules -- sensory details, real people, real places, present tense, second person. The result reads like the opening paragraph of a comedy magazine feature, not an encyclopedia entry.
 
 The technical goal was equally specific: build a production-quality AI application from zero to deployed in a 3-day sprint, using Claude Code and the Kajiro IQ Pro prompt optimization framework. What was estimated to take 8-11 hours was completed in approximately 8 hours across three evening sessions, shipping 10 MVPs plus v1.0.0 branding with 214 passing tests.
 
@@ -54,13 +54,13 @@ The technical goal was equally specific: build a production-quality AI applicati
 | **Date-Based Storytelling** | Pick any date from the calendar. Receive a historically accurate creative nonfiction vignette set on that date. |
 | **Voice Narration** | Every story is automatically narrated by Adam -- a deep, authoritative voice via ElevenLabs TTS. |
 | **Voyagers! Music** | Chronostream Runner ambient soundtrack plays during narration at 12% volume with 2s fade-in and 3s fade-out. |
-| **Genre Discovery** | "Random History" picks a random date and applies one of 20 genre lenses (True Crime, Espionage, Science, Love, War, and 15 more). |
+| **Genre Discovery** | "Random Treasure" picks a random date and applies one of 20 genre lenses (Sunken Ships & Drowned Gold, Buried Pirate Loot, Lost Crown Jewels, Gold Rush Catastrophes, and 16 more). |
 | **Audio Controls** | Play/Pause, Replay from start, Download as MP3, Mute/Unmute background music. |
 | **System-Controlled Accordion** | LoadingState and StoryCard persist in DOM with choreographed expand/collapse transitions -- no user toggle, system controls visibility. |
 | **Real-Time Timing + Cost** | Pipeline timing breakdown and per-request cost estimation (Claude tokens + ElevenLabs characters) displayed on every story. |
 | **Streaming Pipeline** | Unified server endpoint overlaps story and audio generation. Story displays while audio is still being created. |
 | **Themed Loading Messages** | Random archive-themed ("Searching the archives...") and Voyagers!-themed ("The Omni is locked on...") messages during generation. |
-| **Branding Outro** | Every audio file ends with the event title, date, year, and "This audio is created by This Moment in Strange History. Copyright 2026." |
+| **Branding Outro** | Every audio file ends with the event title, date, year, and "This audio is created by This Moment in Lost Treasures. Copyright 2026." |
 | **Professional Branding** | Midjourney cinematic logo, hybrid favicon system (ICO + PNG + Apple + Android), PWA manifest, Open Graph + Twitter Cards for social sharing. See [#31](https://github.com/SeasonalHawk/this-moment-in-history/issues/31). |
 
 ---
@@ -91,7 +91,7 @@ Every tool in this stack was chosen for a specific reason. Here's the decision l
 
 ### Voice Narration: ElevenLabs TTS API (Flash v2.5)
 
-**Why ElevenLabs:** High-quality neural voice synthesis with multiple model tiers. The Adam voice (`pNInz6obpgDQGcFmaJgB`) provides a deep, authoritative narrator tone that matches the literary journalism style of the stories.
+**Why ElevenLabs:** High-quality neural voice synthesis with multiple model tiers. The Adam voice (`pNInz6obpgDQGcFmaJgB`) provides a deep, authoritative narrator tone that matches the comedic history lecture style of the stories.
 
 **Why Flash v2.5:** ElevenLabs offers three model tiers:
 
@@ -129,7 +129,7 @@ Flash v2.5 generates audio for a 150-word story in approximately 5-8 seconds ver
 
 **Why Vitest over Jest:** Native TypeScript support, faster execution (2.5 seconds for 214 tests), and first-class Vite integration. The `jsdom` environment simulates browser APIs for component testing without a real browser.
 
-**Why React Testing Library:** Tests user-visible behavior, not implementation details. Tests query by text content ("Random History", "Pause"), not by CSS classes or component internals.
+**Why React Testing Library:** Tests user-visible behavior, not implementation details. Tests query by text content ("Random Treasure", "Pause"), not by CSS classes or component internals.
 
 ---
 
@@ -138,7 +138,7 @@ Flash v2.5 generates audio for a 150-word story in approximately 5-8 seconds ver
 ### Data Flow
 
 ```
-User clicks a date (or "Random History")
+User clicks a date (or "Random Treasure")
     |
     v
 page.tsx: runPipeline(date, genre?)
@@ -187,7 +187,7 @@ page.tsx (client reads NDJSON stream):
     v
 User hears narration with Voyagers! background music.
     |-- When narration ends: bgMusic.fadeOut() (3s fade)
-    |-- Controls: Play/Pause, Replay, Download, Mute Music, Random History
+    |-- Controls: Play/Pause, Replay, Download, Mute Music, Random Treasure
     |-- Timing + cost estimate displayed on StoryCard
 ```
 
@@ -278,17 +278,17 @@ The choreography sequence:
 
 ### Story Generation
 
-The system prompt is a 400+ word instruction set that enforces a specific literary style. Here's what it controls:
+The system prompt is a 400+ word instruction set that enforces a specific comedic literary style. Here's what it controls:
 
 **Voice rules:**
 - Second person ("you") -- places the reader inside the moment
 - Present tense -- creates immediacy ("You hear the crack of..." not "The crowd heard...")
 - Opens with sensory detail -- never with "On this day in [year]"
-- Literary journalism -- real facts, fictional prose style
+- Comedic literary journalism -- real facts, absurd prose style, punchline endings
 
 **Quality gates:**
 - Every event, date, person, and location must be historically accurate
-- No invented events -- if multiple events occurred, choose the most compelling
+- No invented events -- if multiple events occurred, choose the most hilarious
 - No speculation about thoughts or dialogue unless sourced from historical record
 - One scene, one moment -- not a timeline
 
@@ -301,11 +301,11 @@ The system prompt is a 400+ word instruction set that enforces a specific litera
 
 ### Genre System
 
-When "Random History" is clicked, one of 20 curated genres is applied as a thematic lens:
+When "Random Treasure" is clicked, one of 20 curated genres is applied as a thematic lens:
 
-> Unexplained Disappearances, Mass Hysteria & Panic, Cursed Objects & Places, Bizarre Deaths, Cryptids & Creature Sightings, Paranormal Investigations, Medical Oddities, Strange Weather & Natural Anomalies, Eerie Coincidences, Forgotten Experiments, Bizarre Laws & Trials, Haunted History, Strange Crimes, Mysterious Signals & Messages, Doomsday Predictions & Cults, Time Slips & Glitches, Odd Traditions & Rituals, Weird Science, Lost Civilizations & Ruins, Unsolved Mysteries
+> Sunken Ships & Drowned Gold, Buried Pirate Loot, Lost Crown Jewels, Gold Rush Catastrophes, Stolen Masterpieces, Forgotten Vaults & Safes, Shipwrecked Fortunes, Treasure Map Hoaxes, Misplaced Royal Regalia, Abandoned Mines & Claims, Smuggler's Caches, Lost City Legends, Vanished War Plunder, Botched Heist Loot, Cursed Treasure, Hidden Temple Riches, Sunken Submarine Gold, Failed Expedition Spoils, Forgotten Bank Deposits, Unsolved Treasure Mysteries
 
-The genre doesn't change the factual requirements -- it shapes the *angle*. A War & Military lens on March 14 might surface a battlefield moment. A Food & Cuisine lens on the same date might surface the day a food safety law was signed. Same date, different story, both historically accurate.
+The genre doesn't change the factual requirements -- it shapes the *angle*. A Buried Pirate Loot lens on March 14 might surface a Caribbean plunder story. A Gold Rush Catastrophes lens on the same date might surface the day a prospector lost everything to a swindler. Same date, different story, both historically accurate.
 
 The genre instruction in the user message tells Claude to adopt the tone, pacing, and atmosphere that the genre demands, and to lead with the sensory details that genre thrives on.
 
@@ -316,7 +316,7 @@ The narrator reads:
 2. A brief pause (`\n\n`)
 3. The event title
 4. The date and year
-5. Branding: "This audio is created by This Moment in Strange History. Copyright 2026."
+5. Branding: "This audio is created by This Moment in Lost Treasures. Copyright 2026."
 
 This creates a self-contained audio file. If someone downloads the MP3, the audio itself identifies what event it describes and who created it.
 
@@ -402,7 +402,7 @@ Each MVP produces a *working application*. If development stopped at MVP 1, you'
 | 1 | Core Story Engine | Calendar + AI stories + citations | Claude tool_use for structured output |
 | 2 | Voice Narration | ElevenLabs TTS + play/stop | Audio element lifecycle management |
 | 3 | Background Music | Ambient piano loop + mute toggle | Static asset (zero per-request cost) |
-| 4 | Random History | 20 genre lenses + random date | Genre as prompt modifier, not data filter |
+| 4 | Random Treasure | 20 genre lenses + random date | Genre as prompt modifier, not data filter |
 | 5 | Auto-TTS Pipeline | Automatic audio generation | Unified pipeline replacing manual buttons |
 | 6 | Autoplay Fix + Timing | Browser autoplay compliance + timers | `warmUp()` pattern + `useRef` for timing |
 | 7 | Efficiency Review | Bug fixes + code cleanup | `handleEndedRef` identity fix, dead prop removal |
@@ -485,7 +485,7 @@ Tests verify user-visible behavior, not implementation details:
 
 ```typescript
 // Good: tests what the user sees
-expect(screen.getByText('Random History')).toBeInTheDocument();
+expect(screen.getByText('Random Treasure')).toBeInTheDocument();
 
 // Good: tests interaction behavior
 fireEvent.click(screen.getByText('Pause'));
@@ -510,8 +510,8 @@ Configuration tests verify that hardcoded constants match expected values -- cat
 ### Setup
 
 ```bash
-git clone https://github.com/SeasonalHawk/this-moment-in-strange-history.git
-cd this-moment-in-strange-history
+git clone https://github.com/SeasonalHawk/this-moment-in-lost-treasures.git
+cd this-moment-in-lost-treasures
 pnpm install
 ```
 
@@ -549,7 +549,7 @@ RATE_LIMIT_WINDOW_MS=60000  # Rate limit window in milliseconds (default: 60000)
 
 1. Open `src/lib/genres.ts`
 2. Add your genre string to the `GENRES` array
-3. The genre is automatically available in Random History -- no other changes needed
+3. The genre is automatically available in Random Treasure -- no other changes needed
 4. Update the genre count in tests (`genres.test.ts`)
 
 ### Change the AI Model
@@ -627,4 +627,4 @@ Fade-in and fade-out don't need to be symmetrical. The Voyagers! music uses 2 se
 
 ---
 
-*This guide was written as part of the project's documentation to demonstrate the technical decisions, architectural patterns, and development methodology behind This Moment in Strange History. Every line of code, every prompt, and every architectural decision in this project was conceived and directed by Kenneth Benavides.*
+*This guide was written as part of the project's documentation to demonstrate the technical decisions, architectural patterns, and development methodology behind This Moment in Lost Treasures. Every line of code, every prompt, and every architectural decision in this project was conceived and directed by Kenneth Benavides.*

@@ -12,116 +12,116 @@
 
 ---
 
-## Story Phase — Archive/Discovery Theme (5 images)
+## Story Phase — Treasure Hunt Theme (5 images)
 
 ### 1. story-1.webp
 
-**Message:** "Searching the archives..."
+**Message:** "Consulting a suspiciously stained treasure map..."
 
 ```
-A dimly lit ancient archive room, towering wooden shelves filled with leather-bound books and scrolls, dust particles floating in golden lamplight, warm amber tones, cinematic wide shot --ar 16:9 --v 6.1
+A weathered treasure map spread across a tavern table, suspicious coffee and rum stains obscuring key landmarks, a cartoon-like compass rose pointing in the wrong direction, candlelight flickering over faded ink, warm amber and sepia tones, comical yet cinematic wide shot --ar 16:9 --v 6.1
 ```
 
 ---
 
 ### 2. story-2.webp
 
-**Message:** "Consulting the scrolls..."
+**Message:** "Bribing a parrot for insider information..."
 
 ```
-An ornate reading desk with unfurled parchment scrolls, brass instruments and a magnifying glass, candlelight casting warm shadows, scholarly atmosphere, cinematic --ar 16:9 --v 6.1
+A colorful macaw parrot perched on a dock post, a hand offering it a gold doubloon, the parrot looking smug and judgmental, a pirate ship blurred in the harbor background, tropical golden-hour lighting, comical cinematic --ar 16:9 --v 6.1
 ```
 
 ---
 
 ### 3. story-3.webp
 
-**Message:** "Dusting off the records..."
+**Message:** "Blowing dust off a very dramatic treasure chest..."
 
 ```
-Hands carefully lifting a dusty leather journal from a wooden crate in a historical vault, motes of dust catching golden light, sepia and amber palette, cinematic --ar 16:9 --v 6.1
+A massive ornate treasure chest in a torch-lit cave, an enormous cloud of dust billowing off the lid as it cracks open, golden light spilling from inside, cobwebs and ancient coins scattered around, dramatic and slightly absurd, cinematic --ar 16:9 --v 6.1
 ```
 
 ---
 
 ### 4. story-4.webp
 
-**Message:** "Decoding an ancient manuscript..."
+**Message:** "Cross-referencing pirate diaries with tax records..."
 
 ```
-A mysterious illuminated manuscript on a stone desk, magnifying lens hovering over faded calligraphy, dramatic chiaroscuro lighting, warm gold and deep shadows, cinematic --ar 16:9 --v 6.1
+A cluttered desk piled with tattered pirate journals next to neat stacks of bureaucratic ledgers, a quill pen, reading spectacles balanced on a skull, ink bottles and old tax stamps, warm lamplight, absurd scholarly pirate aesthetic, cinematic --ar 16:9 --v 6.1
 ```
 
 ---
 
 ### 5. story-5.webp
 
-**Message:** "Opening the vault of forgotten stories..."
+**Message:** "Digging through history's lost-and-found bin..."
 
 ```
-A massive stone vault door slowly opening, golden light streaming through the gap revealing shelves of ancient artifacts, dramatic perspective, warm amber glow, cinematic --ar 16:9 --v 6.1
+A chaotic lost-and-found bin overflowing with historical artifacts — a golden crown, a rusty cutlass, ancient coins, a compass, a message in a bottle — sitting in a dusty underground chamber, warm amber glow from a hanging lantern, comical abundance, cinematic --ar 16:9 --v 6.1
 ```
 
 ---
 
-## Audio Phase — Voyagers! Time-Travel Theme (6 images)
+## Audio Phase — Treasure Discovery/Unearthing Theme (6 images)
 
 ### 6. audio-1.webp
 
-**Message:** "The Omni is locked on — engaging time coordinates..."
+**Message:** "A treasure hunter is clearing their throat..."
 
 ```
-A futuristic handheld device with glowing dials and coordinates display, swirling temporal energy around it, teal and gold light effects, sci-fi adventure aesthetic, cinematic --ar 16:9 --v 6.1
+A rugged treasure hunter in a torch-lit ancient ruin, hand on chest dramatically clearing their throat, dust swirling around them, explorer hat and worn leather gear, golden torchlight bouncing off stone walls, comical theatrical pose, cinematic --ar 16:9 --v 6.1
 ```
 
 ---
 
 ### 7. audio-2.webp
 
-**Message:** "Firing up the time machine..."
+**Message:** "Polishing the narration until it gleams like gold..."
 
 ```
-A brass and crystal time machine console powering up with crackling energy, spinning gears and glowing panels, steampunk meets sci-fi, warm amber and electric blue, cinematic --ar 16:9 --v 6.1
+Hands polishing a large gold bar with a velvet cloth until it gleams brilliantly, surrounded by a pile of treasure and jewels in a cave, exaggerated shine and sparkle effects, warm golden light flooding the scene, comical perfectionism, cinematic --ar 16:9 --v 6.1
 ```
 
 ---
 
 ### 8. audio-3.webp
 
-**Message:** "The pilot is charting a course through history..."
+**Message:** "The storyteller found a megaphone in the ruins..."
 
 ```
-A navigator at a futuristic holographic star map showing historical timelines, constellations of dates and events floating in golden light, cinematic wide shot --ar 16:9 --v 6.1
+An adventurer standing atop ancient crumbling ruins, triumphantly holding up a battered brass megaphone covered in moss and vines, dramatic sunset backlighting, wind-swept hair, heroic and absurd pose, cinematic wide shot --ar 16:9 --v 6.1
 ```
 
 ---
 
 ### 9. audio-4.webp
 
-**Message:** "Calibrating the temporal compass..."
+**Message:** "Translating ancient treasure gossip into English..."
 
 ```
-An ornate steampunk compass with glowing temporal symbols instead of cardinal directions, energy arcs between brass arms, dramatic close-up, gold and teal glow, cinematic --ar 16:9 --v 6.1
+A stone tablet covered in ridiculous hieroglyphic-style carvings of pirates and treasure chests, a magnifying glass hovering over the symbols, a messy notebook of attempted translations beside it, warm candlelight, scholarly chaos, cinematic --ar 16:9 --v 6.1
 ```
 
 ---
 
 ### 10. audio-5.webp
 
-**Message:** "Spinning up the portal — adventure awaits..."
+**Message:** "A voice echoes from inside a treasure chest..."
 
 ```
-A swirling time portal opening in an ancient stone archway, golden energy spiraling inward, a silhouette about to step through, dramatic lighting, cinematic --ar 16:9 --v 6.1
+A glowing treasure chest slightly ajar in a dark cavern, visible sound waves and golden light emanating from inside, gems and coins scattered around the base, eerie yet comical atmosphere, dramatic rim lighting, cinematic --ar 16:9 --v 6.1
 ```
 
 ---
 
 ### 11. audio-6.webp
 
-**Message:** "The green light is flashing — history needs us..."
+**Message:** "Someone is dramatically unrolling a scroll..."
 
 ```
-A dramatic green signal light flashing on a futuristic command console, urgent atmosphere, reflections on polished surfaces, green and amber lighting, adventure-ready mood, cinematic --ar 16:9 --v 6.1
+A pair of hands dramatically unrolling an enormous ancient scroll that cascades across a stone floor in a torch-lit temple, the scroll covered in treasure maps and illustrations, dust rising from the parchment, theatrical golden lighting, comical grandeur, cinematic --ar 16:9 --v 6.1
 ```
 
 ---

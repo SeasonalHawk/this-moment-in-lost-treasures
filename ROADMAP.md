@@ -1,15 +1,15 @@
 # Product Roadmap & Competitive Analysis
 
-**This Moment in Strange History** — Strategic Planning Document
+**This Moment in Lost Treasures** — Strategic Planning Document
 By Kenneth Benavides | March 2026
 
 ---
 
 ## Executive Summary
 
-This document outlines the product roadmap, competitive landscape, feature prioritization, and image generation API evaluation for "This Moment in Strange History." The analysis was conducted using the Kajiro IQ Pro prompt optimization framework to ensure comprehensive coverage and actionable recommendations.
+This document outlines the product roadmap, competitive landscape, feature prioritization, and image generation API evaluation for "This Moment in Lost Treasures." The analysis was conducted using the Kajiro IQ Pro prompt optimization framework to ensure comprehensive coverage and actionable recommendations.
 
-The core finding: **This Moment in Strange History occupies a genuinely uncontested market position** — no existing product combines AI-generated immersive narratives, genre selection, TTS narration, and background music for historical events. The closest analogs are either encyclopedic reference tools (History.com, Wikipedia) or pre-produced podcast content (History Daily). None offer on-demand, AI-powered, interactive storytelling.
+The core finding: **This Moment in Lost Treasures occupies a genuinely uncontested market position** — no existing product combines AI-generated immersive narratives, genre selection, TTS narration, and background music for lost treasure events. The closest analogs are either encyclopedic reference tools (History.com, Wikipedia) or pre-produced podcast content (History Daily). None offer on-demand, AI-powered, interactive storytelling about the most outlandish and hilarious lost fortunes.
 
 ---
 
@@ -57,15 +57,15 @@ The core finding: **This Moment in Strange History occupies a genuinely uncontes
 
 ### Strategic Insight
 
-The market splits into two camps: **encyclopedic reference tools** (History.com, Wikipedia, Britannica) and **deep-dive narrative content** (podcasts like History Daily). Nobody currently bridges both with AI.
+The market splits into two camps: **encyclopedic reference tools** (History.com, Wikipedia, Britannica) and **deep-dive narrative content** (podcasts like History Daily). Nobody currently bridges both with AI focused on lost treasures.
 
-The biggest risks: (1) a well-funded incumbent adding AI features, (2) a general AI storytelling platform pivoting to nonfiction history. Speed to market with social sharing and image generation builds a defensible moat through user habit and content virality.
+The biggest risks: (1) a well-funded incumbent adding AI features, (2) a general AI storytelling platform pivoting to nonfiction lost treasures. Speed to market with social sharing and image generation builds a defensible moat through user habit and content virality.
 
 ---
 
 ## Feature Comparison Matrix
 
-| Feature | History.com | Wikipedia | Britannica | Mobile Apps | History Podcasts | Humy.ai | **This Moment in Strange History** |
+| Feature | History.com | Wikipedia | Britannica | Mobile Apps | History Podcasts | Humy.ai | **This Moment in Lost Treasures** |
 |---------|:-----------:|:---------:|:----------:|:-----------:|:----------------:|:-------:|:-------------------------:|
 | Date-based events | Yes | Yes | Yes | Yes | Yes | No | **Yes** |
 | AI-generated narratives | No | No | No | No | No | Partial | **Yes** |
@@ -93,12 +93,12 @@ The biggest risks: (1) a well-funded incumbent adding AI features, (2) a general
 Features that **no competitor offers in combination**:
 
 1. **AI-generated immersive narratives** — 2nd-person, present-tense literary journalism (vs. encyclopedic bullet points)
-2. **20 genre/tone options** — True Crime, Espionage, Love & Romance, etc. History through different lenses
+2. **20 genre/tone options** — Sunken Ships & Drowned Gold, Buried Pirate Loot, Lost Crown Jewels, etc. Lost treasures through different lenses
 3. **Server-streamed pipeline** — Story + audio in one streaming NDJSON request with server-side overlap
 4. **Voyagers!-themed soundtrack** — Chronostream Runner ambient music with professional fade-in/out synced with narration
 5. **Audio download** — Export narration as MP3 with branding outro
 6. **MLA citations** — Academic-grade sourcing on every story
-7. **Random discovery** — Genre-randomized exploration across dates
+7. **Random Treasure** — Genre-randomized exploration across dates
 8. **Per-request cost transparency** — Real-time timing and cost estimation displayed on every story
 9. **System-controlled UI choreography** — Polished expand/collapse transitions with persistent DOM cards
 
@@ -110,7 +110,7 @@ Features that **no competitor offers in combination**:
 
 | Feature | Why It Matters | Effort | Impact |
 |---------|---------------|:------:|:------:|
-| **Image generation** | AI narrative + AI image + AI audio = the complete trifecta. TikTok history content proves massive demand for visual history | Medium | Very High |
+| **Image generation** | AI narrative + AI image + AI audio = the complete trifecta. TikTok history content proves massive demand for visual lost treasures | Medium | Very High |
 | **Social sharing** | Shareable story cards are free marketing. No competitor does this well | Low | High |
 | **PWA / mobile install** | Polished PWA with home-screen install leapfrogs mediocre native apps. Avoids App Store costs | Low | High |
 | **User favorites** (localStorage) | Zero-backend bookmarking. Builds habit and personal collection | Low | Medium |
@@ -120,9 +120,9 @@ Features that **no competitor offers in combination**:
 
 | Feature | Why It Matters | Effort | Impact |
 |---------|---------------|:------:|:------:|
-| **Podcast RSS feed** | Auto-generate a daily AI history podcast from the pipeline. First of its kind | Medium | High |
+| **Podcast RSS feed** | Auto-generate a daily AI lost treasures podcast from the pipeline. First of its kind | Medium | High |
 | **Gamification** (streaks, quizzes) | Duolingo-style engagement mechanics. Daily quiz from story content | Medium | Medium |
-| **Timeline visualization** | Personal "history map" of explored dates grows over time | Medium | Medium |
+| **Timeline visualization** | Personal "treasure map" of explored dates grows over time | Medium | Medium |
 | **Multiple languages** | Expands addressable market. Claude supports 50+ languages | High | High |
 
 ### Tier 3: Long-Term Foundation
@@ -152,16 +152,16 @@ Features that **no competitor offers in combination**:
 | **Ideogram 2.0** | $0.08 | ~5-10s | Varies | Yes | Moderate | REST only |
 | **Midjourney** | N/A | N/A | N/A | N/A | N/A | **No API** |
 
-### Critical Factor: Content Policy for Historical Content
+### Critical Factor: Content Policy for Lost Treasures Content
 
-Historical storytelling includes warfare, colonialism, revolution, plague, and other sensitive topics. Content policy is a make-or-break factor:
+Lost treasures storytelling includes warfare, colonialism, piracy, shipwrecks, and other sensitive topics. Content policy is a make-or-break factor:
 
 | Provider | Historical Violence | War Imagery | Real Historical Figures | Verdict |
 |----------|:-------------------:|:-----------:|:----------------------:|---------|
-| **Flux** | Allowed | Allowed | Allowed | Best for history |
-| **Stability AI** | Mostly allowed | Allowed | Allowed | Good for history |
-| **OpenAI** | Gray area — filters aggressive | Often blocked | Allowed with restrictions | Risky for history |
-| **Google Imagen** | Restricted | Often blocked | Restricted | Risky for history |
+| **Flux** | Allowed | Allowed | Allowed | Best for lost treasures |
+| **Stability AI** | Mostly allowed | Allowed | Allowed | Good for lost treasures |
+| **OpenAI** | Gray area — filters aggressive | Often blocked | Allowed with restrictions | Risky for lost treasures |
+| **Google Imagen** | Restricted | Often blocked | Restricted | Risky for lost treasures |
 | **Leonardo AI** | Moderate | Allowed | Allowed | Acceptable |
 
 ### Integration Pattern Comparison
@@ -183,7 +183,7 @@ The existing ElevenLabs pipeline follows: `POST JSON → receive binary → retu
 
 **Why Flux wins for this project:**
 
-1. **Content policy** — Most permissive among top-tier models. Critical for depicting historical warfare, colonialism, revolution, and other sensitive historical events that make up many of the 20 genres
+1. **Content policy** — Most permissive among top-tier models. Critical for depicting piracy, shipwrecks, colonial plunder, and other sensitive lost treasure events that make up many of the 20 genres
 2. **Quality** — Tied with OpenAI at Elo 1,265 (top of leaderboard) at roughly one-third the cost
 3. **Speed** — 4.5 seconds for Pro quality, 1-2 seconds for Schnell (preview quality)
 4. **Cost** — $0.055/image (Pro) vs. $0.08-0.167 (OpenAI high-quality)
@@ -200,7 +200,7 @@ The existing ElevenLabs pipeline follows: `POST JSON → receive binary → retu
 
 ### Fallback: OpenAI GPT Image 1 Mini
 
-If Flux integration proves problematic, OpenAI GPT Image 1 Mini at $0.02/image (medium quality) offers the simplest integration via the `openai` npm SDK — identical synchronous pattern to the current ElevenLabs route. However, content policy may block some historical scenes.
+If Flux integration proves problematic, OpenAI GPT Image 1 Mini at $0.02/image (medium quality) offers the simplest integration via the `openai` npm SDK — identical synchronous pattern to the current ElevenLabs route. However, content policy may block some lost treasure scenes.
 
 ### Pipeline Architecture for Image Generation
 
@@ -256,7 +256,7 @@ MVP 9 and 10 diverged from the original plan above. Instead of image generation 
 | **Voyagers! soundtrack** | Replaced dreamscape piano with Chronostream Runner — a fuller, themed ambient track |
 | **Background music warmUp** | Fixed browser autoplay for bg music with same warmUp() pattern as TTS |
 | **Professional fade-in/out** | 2s fade-in, 3s fade-out (asymmetric — mirrors broadcast practice) |
-| **Themed loading messages** | Random archive-themed and Voyagers!-themed messages during generation |
+| **Themed loading messages** | Random treasure-themed and Voyagers!-themed messages during generation |
 | **Per-request cost estimation** | Claude token count + ElevenLabs character count → real-time cost displayed on card |
 | **209 tests passing** | +115 new tests covering music, costs, loading messages, regression guards |
 
@@ -290,7 +290,7 @@ MVP 9 and 10 diverged from the original plan above. Instead of image generation 
 | **Open Graph + Twitter Cards** | Social preview metadata in `layout.tsx` with `metadataBase` for production URL resolution |
 | **SVG timeline motif** | Flat `logo.svg` for inline/themeable use |
 | **Dev scripts** | `start.sh` / `stop.sh` convenience scripts |
-| **Bug fixes** | metadataBase warning, branding implementation — see [#23](https://github.com/SeasonalHawk/this-moment-in-history/issues/23)-[#29](https://github.com/SeasonalHawk/this-moment-in-history/issues/29), [#31](https://github.com/SeasonalHawk/this-moment-in-history/issues/31) |
+| **Bug fixes** | metadataBase warning, branding implementation — see [#23](https://github.com/SeasonalHawk/this-moment-in-lost-treasures/issues/23)-[#29](https://github.com/SeasonalHawk/this-moment-in-lost-treasures/issues/29), [#31](https://github.com/SeasonalHawk/this-moment-in-lost-treasures/issues/31) |
 
 ### What's Next: MVP 11+
 
@@ -298,7 +298,7 @@ Based on the current state (10 MVPs, 214 tests, polished audio + UI), the highes
 
 | MVP | Focus | Key Features |
 |-----|-------|-------------|
-| **11** | **Visual History** | Image generation (Flux 2 Pro via fal.ai, parallel with TTS in NDJSON pipeline), loading carousel with crossfading AI-generated artwork, social sharing (Open Graph images + share button), PWA manifest |
+| **11** | **Visual Treasures** | Image generation (Flux 2 Pro via fal.ai, parallel with TTS in NDJSON pipeline), loading carousel with crossfading AI-generated artwork, social sharing (Open Graph images + share button), PWA manifest |
 | **12** | **Engagement** | User favorites (localStorage → cloud sync), daily notification/digest, podcast RSS feed auto-generation |
 | **13** | **Scale** | User accounts, gamification (streaks, quizzes), timeline visualization of explored dates |
 | **14+** | **Monetization** | Freemium tiers, classroom/education tools, public API, multi-language support |
@@ -334,7 +334,7 @@ Based on the current state (10 MVPs, 214 tests, polished audio + UI), the highes
 
 ### The Vision
 
-"This Moment in Strange History" becomes the **default way people experience historical dates** — not as dry encyclopedia entries, but as immersive, multi-sensory stories they can see, hear, and feel. Every date becomes a portal. Every genre becomes a lens. Every story becomes shareable.
+"This Moment in Lost Treasures" becomes the **default way people experience lost treasure dates** — not as dry encyclopedia entries, but as immersive, multi-sensory stories they can see, hear, and feel. Every date becomes a portal. Every genre becomes a lens. Every story becomes shareable.
 
 ---
 

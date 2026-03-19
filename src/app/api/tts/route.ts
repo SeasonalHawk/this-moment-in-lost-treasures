@@ -1,11 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { rateLimit } from '@/lib/rateLimit';
+import { requireAuth } from '@/lib/session';
 
 const ELEVENLABS_VOICE_ID = 'pNInz6obpgDQGcFmaJgB'; // Adam — deep, authoritative male narrator
 const ELEVENLABS_MODEL = 'eleven_flash_v2_5'; // Fastest English model — lowest latency
 const BRANDING_OUTRO = 'This audio is created by This Moment in Lost Treasures. Copyright 2026.';
 
 export async function POST(request: NextRequest) {
+  const session = await requireAuth();
+  if (!session) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   // Rate limit by IP
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
     || request.headers.get('x-real-ip')

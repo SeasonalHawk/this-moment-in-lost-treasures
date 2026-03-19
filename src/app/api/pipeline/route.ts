@@ -2,6 +2,7 @@ import { NextRequest } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
 import { validateRequest, buildUserMessage, monthName } from '@/lib/validation';
 import { rateLimit } from '@/lib/rateLimit';
+import { requireAuth } from '@/lib/session';
 import { HISTORY_SYSTEM_PROMPT, VIGNETTE_TOOL, STORY_MODEL } from '@/lib/prompts';
 
 const ELEVENLABS_VOICE_ID = 'pNInz6obpgDQGcFmaJgB'; // Adam
@@ -19,6 +20,11 @@ const BRANDING_OUTRO = 'This audio is created by This Moment in Lost Treasures. 
  * while TTS is still generating on the server (server-side overlap).
  */
 export async function POST(request: NextRequest) {
+  const session = await requireAuth();
+  if (!session) {
+    return Response.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
     || request.headers.get('x-real-ip')
     || 'unknown';

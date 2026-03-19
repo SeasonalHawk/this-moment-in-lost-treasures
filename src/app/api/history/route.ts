@@ -2,9 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
 import { validateRequest, buildUserMessage } from '@/lib/validation';
 import { rateLimit } from '@/lib/rateLimit';
+import { requireAuth } from '@/lib/session';
 import { HISTORY_SYSTEM_PROMPT, VIGNETTE_TOOL, STORY_MODEL } from '@/lib/prompts';
 
 export async function POST(request: NextRequest) {
+  const session = await requireAuth();
+  if (!session) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
     || request.headers.get('x-real-ip')
     || 'unknown';

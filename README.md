@@ -20,6 +20,7 @@ An AI-powered lost treasures storytelling app with voice narration. Pick any cal
 | AI Storytelling | Anthropic Claude API (`claude-haiku-4-5-20251001`) |
 | Voice Narration | ElevenLabs TTS API (Adam voice, Flash v2.5) |
 | Background Music | Voyagers!-themed ambient soundtrack (Chronostream Runner, static asset) |
+| Authentication | iron-session (encrypted cookie sessions, static PIN gate) |
 | Calendar | react-day-picker, date-fns |
 | Testing | Vitest, React Testing Library |
 | Prompt Framework | Kajiro IQ Pro |
@@ -33,11 +34,13 @@ cd this-moment-in-lost-treasures
 pnpm install
 ```
 
-Create `.env.local` with your API keys:
+Create `.env.local` with your API keys and access PIN:
 
 ```env
 ANTHROPIC_API_KEY=your-anthropic-key
 ELEVENLABS_API_KEY=your-elevenlabs-key
+SESSION_SECRET=a-random-string-at-least-32-characters-long
+APP_ACCESS_PIN=12345678
 ```
 
 Start the dev server:
@@ -68,15 +71,21 @@ this-moment-in-lost-treasures/
 ├── src/
 │   ├── app/
 │   │   ├── api/
+│   │   │   ├── auth/
+│   │   │   │   ├── verify/route.ts   # POST — validates 8-digit PIN, sets iron-session cookie
+│   │   │   │   ├── status/route.ts   # GET — returns { authenticated: bool }
+│   │   │   │   └── logout/route.ts   # POST — destroys session
 │   │   │   ├── history/route.ts      # Story generation endpoint (standalone fallback)
 │   │   │   ├── pipeline/route.ts     # Unified streaming pipeline (story + TTS, NDJSON)
 │   │   │   └── tts/route.ts          # Text-to-speech endpoint (standalone fallback)
-│   │   ├── layout.tsx                # Root layout — Geist fonts, metadata, favicons, OG/Twitter cards
+│   │   ├── layout.tsx                # Root layout — Geist fonts, metadata, AuthProvider wrapper
 │   │   └── page.tsx                  # Main page — streaming pipeline orchestrator, logo header
 │   ├── components/
+│   │   ├── AuthProvider.tsx           # Client wrapper — checks session, shows PinGate or children
 │   │   ├── CalendarPicker.tsx         # Date picker (react-day-picker, amber theme)
 │   │   ├── Collapsible.tsx            # Reusable accordion with locked (system-controlled) mode
 │   │   ├── LoadingState.tsx           # Multi-phase loading indicator with live timers
+│   │   ├── PinGate.tsx                # 8-digit PIN entry form (dark theme, amber accents)
 │   │   └── StoryCard.tsx              # Story display + audio controls + timing + cost estimate
 │   ├── hooks/
 │   │   ├── useBackgroundMusic.ts      # Voyagers! music — fade-in/out, warmUp, mute toggle
@@ -86,8 +95,10 @@ this-moment-in-lost-treasures/
 │   │   ├── costs.ts                   # Per-request cost estimation (Claude + ElevenLabs)
 │   │   ├── genres.ts                  # 20 content genres + random selection
 │   │   ├── loadingMessages.ts         # Themed loading phase messages (treasure + Voyagers!)
+│   │   ├── pinAuth.ts                 # PIN verification + brute-force lockout (5 attempts/15 min)
 │   │   ├── prompts.ts                 # Shared system prompt + tool definition
 │   │   ├── rateLimit.ts               # In-memory rate limiter (10 req/IP/60s)
+│   │   ├── session.ts                 # iron-session config, getSession(), requireAuth()
 │   │   └── validation.ts             # Input validation (month, day, genre)
 │   └── __tests__/
 │       ├── Collapsible.test.tsx        # 20 tests — accordion, locked mode, aria, chevron, opacity
@@ -339,11 +350,16 @@ ElevenLabs pricing varies by plan:
 |----------|----------|-------------|
 | `ANTHROPIC_API_KEY` | Yes | Anthropic API key from console.anthropic.com |
 | `ELEVENLABS_API_KEY` | Yes | ElevenLabs API key (needs `text_to_speech` permission) |
+| `SESSION_SECRET` | Yes | 32+ character secret for iron-session cookie encryption |
+| `APP_ACCESS_PIN` | Yes | 8-digit PIN users must enter to access the app |
 | `RATE_LIMIT_MAX` | No | Max requests per IP per window (default: 10) |
 | `RATE_LIMIT_WINDOW_MS` | No | Rate limit window in ms (default: 60000) |
 
 ## Security
 
+- **PIN authentication** — 8-digit access code gate via iron-session encrypted cookies (HttpOnly, Secure, SameSite=Lax, 24-hour TTL)
+- **Brute-force protection** — 5 PIN attempts per IP, then 15-minute lockout with timing-safe comparison (`crypto.timingSafeEqual`)
+- **Defense in depth** — client-side `<AuthProvider>` gates the UI; server-side `requireAuth()` guards all API routes (returns 401 without valid session)
 - Both API keys are server-side only — never exposed to the browser
 - Rate limiting prevents abuse (10 req/IP/min, shared across endpoints)
 - Security headers configured in vercel.json (CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy)
